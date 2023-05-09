@@ -11,7 +11,7 @@
 				<a href="/staff/home">Home</a>
 				<a href="/staff/manageStaff">Add staff</a>
 				<a href="/students/manageStudent">Add student</a>
-
+				<a href="/students/studentList">Student list</a>
 			</aside>
 			<h1>Woodlands University Record Management System</h1>
 

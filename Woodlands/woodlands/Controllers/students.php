@@ -27,6 +27,18 @@ class students{
         header('location:/students/manageStudent');
 
     }
+    public function studentList(){
+        $students = $this->studentsTable->findAll();
+
+        return[
+            'template'=>'studentList.html.php',
+            'variables'=>[
+                'students'=>$students
+                ],
+            'title'=> 'Student List'
+        ];
+        
+    }
 
     
 

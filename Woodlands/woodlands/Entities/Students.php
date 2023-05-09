@@ -6,6 +6,7 @@ class Students {
     private $personalTutorialTable;
     private $modulesTable;
     private $attendanceTable;
+    private $staffTable;
   
     public $students_id;
     public $firstname;
