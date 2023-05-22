@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link rel="stylesheet" href="/styles.css"/>
-		<title><?=$title?></title>
-	</head>
-	<body>
-	<header>
-		<section>
-			<aside>
-				<a href="/staff/home">Home</a>
-				<a href="/staff/manageStaff">Add staff</a>
-				<a href="/students/manageStudent">Add student</a>
-				<a href="/students/studentList">Student list</a>
-			</aside>
-			<h1>Woodlands University Record Management System</h1>
+<head>
+  <link rel="stylesheet" href="/styles.css"/>
+  <title><?=$title?></title>
 
-		</section>
-	</header>
-	
-	
+</head>
+<body>
+  <header>
+    <h1>Woodlands University Record Management System</h1>
+  </header>
 
-	<section class="right">
+  <div class="sidebar">
+    <a href="/staff/home"><div><img src="/images/home.png" alt="Home" /><h2> Home</h2></div></a>
+    <a href="/staff/manageStaff"><div><img src="/images/team.png" alt="Add staff" /><h2> Staff</h2></div></a>
+    <a href="/students/manageStudent"><div><img src="/images/add_student.png" alt="Add student" /><h2>Add Student</h2></div></a>
+    <a href="/students/studentList"><div><img src="/images/students.png" alt="Student list" /><h2>View Students</h2></div></a>
+  </div>
+
+  <div class="content">
     <?=$output?>
+  </div>
 
-	</main>
-<footer>
-	
-	
-	</footer>
+  <footer>
+    <!-- Footer content -->
+  </footer>
 </body>
 </html>
