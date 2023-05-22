@@ -1,0 +1,114 @@
+    /* CSS for the layout and styling */
+    body {
+        margin: 0;
+        padding: 0;
+      }
+  
+      header {
+        background-color: purple;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        height: 14vh;
+    
+      }
+  
+      h1 {
+        color: white;
+        margin: 0;
+        font-size: 5dvh;
+      }
+  
+      .sidebar {
+        position: fixed;
+        z-index: -1;
+        top: 16vh;
+        left: 0;
+        bottom: 0;
+        width: 15%;
+        background-color: orange;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+      }
+  
+      .sidebar a {
+        display: flex;
+        align-items: end;
+        color: black;
+        text-decoration: none;
+        font-size: 2dvh;
+        background-color: lightgray;
+        border-radius: 5px;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 5px;
+      }
+  
+      .sidebar a img {
+        display: inline-block;
+        max-width: 100%;
+        max-height: 50px;
+        
+      }
+      .sidebar a h2{
+        display: inline-block;
+        margin-left: 2vw;
+        text-overflow: wrap;
+        width: 2vw;
+        text-align: center;
+      }
+  
+      .content {
+        margin-left: 20%;
+        padding: 20px;
+      }
+  
+      footer {
+
+        background-color: purple;
+        height: 10vh;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+      }
+
+
+      /* FORMS */
+      .form {
+        display: flex;
+        flex-wrap: wrap;
+      }
+  
+      .form label {
+        width: 20%;
+        padding-right: 10px;
+        box-sizing: border-box;
+      }
+  
+      .form input[type="text"],
+      .form input[type="date"] {
+        width: 30%; /* Adjusted width to accommodate two inputs per row */
+        margin-bottom: 10px;
+        padding: 5px;
+        box-sizing: border-box;
+      }
+  
+      .form input[type="submit"] {
+        width: 100%;
+        margin-top: 10px;
+        padding: 5px 10px;
+        background-color: purple;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .form input.error {
+        border-color: red;
+      }
