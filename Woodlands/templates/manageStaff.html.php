@@ -1,17 +1,69 @@
-<form method="POST" action="">
-    <input type="text" name="staff[staff_id]" value="<?=$_GET['id']??''?>" placeholder="Staff ID">
-    <input type="text" name="staff[status]" value="<?=$_GET['status']??''?>" placeholder="Status">
-    <input type="text" name="staff[dormancy_reason]" value="<?=$_GET['dormancy_reason']??''?>" placeholder="Dormancy reason">
-    <input type="text" name="staff[firstname]" value="<?=$_GET['firstname']??''?>" placeholder="First name">
-    <input type="text" name="staff[middlename]" value="<?=$_GET['middlename']??''?>" placeholder="Middle name">
-    <input type="text" name="staff[surname]" value="<?=$_GET['surname']??''?>" placeholder="Surname">
-    <input type="text" name="staff[street]" value="<?=$_GET['term_street']??''?>" placeholder="Street">
-    <input type="text" name="staff[town]" value="<?=$_GET['town']??''?>" placeholder="Town">
-    <input type="text" name="staff[postcode]" value="<?=$_GET['postcode']??''?>" placeholder="Postcode">
-    <input type="text" name="staff[phone]" value="<?=$_GET['phone']??''?>" placeholder="Phone number">
-    <input type="text" name="staff[email]" value="<?=$_GET['email']??''?>" placeholder="Email address">
-    <input type="text" name="staff[roles]" value="<?=$_GET['course_id']??''?>" placeholder="Course ID">
-    <input type="text" name="staff[mod_leader]" value="<?=$_GET['home_address']??''?>" placeholder="Home address">
-    <input type="text" name="staff[specialist_subject]" value="<?=$_GET['home_town']??''?>" placeholder="Home town">
+<form class="form" method="POST" action="">
+    <?php if (!empty($staffMembers)): ?>
+        <?php foreach ($staffMembers as $staffMember): ?>
+            <label for="staff_id">Staff ID:</label>
+            <input type="text" name="staff[staff_id]" id="staff_id" value="<?= $staffMember->staff_id ?? '' ?>" placeholder="Staff ID" required>
+
+            <label for="status">Status:</label>
+            <input type="text" name="staff[status]" id="status" value="<?= $staffMember->status ?? '' ?>" placeholder="Status" required>
+
+            <label for="dormancy_reason">Dormancy Reason:</label>
+            <input type="text" name="staff[dormancy_reason]" id="dormancy_reason" value="<?= $staffMember->dormancy_reason ?? '' ?>" placeholder="Dormancy reason">
+
+            <label for="first_name">First Name:</label>
+            <input type="text" name="staff[firstname]" id="first_name" value="<?= $staffMember->firstname ?? '' ?>" placeholder="First name" required>
+
+            <label for="middle_name">Middle Name:</label>
+            <input type="text" name="staff[middlename]" id="middle_name" value="<?= $staffMember->middlename ?? '' ?>" placeholder="Middle name">
+
+            <label for="surname">Surname:</label>
+            <input type="text" name="staff[surname]" id="surname" value="<?= $staffMember->surname ?? '' ?>" placeholder="Surname" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" name="staff[phone]" id="phone" value="<?= $staffMember->phone ?? '' ?>" placeholder="Phone number" required>
+
+            <label for="email">Email Address:</label>
+            <input type="text" name="staff[email]" id="email" value="<?= $staffMember->email ?? '' ?>" placeholder="Email address" required>
+
+        <?php endforeach; ?>
+    <?php endif; ?>
+
     <input type="submit" value="Submit">
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('.form');
+            const inputs = form.querySelectorAll('input[required]');
+
+            function validateInput(input) {
+                if (input.checkValidity()) {
+                    input.classList.remove('error');
+                } else {
+                    input.classList.add('error');
+                }
+            }
+
+            function validateForm() {
+                inputs.forEach((input) => {
+                    validateInput(input);
+                });
+            }
+
+            inputs.forEach((input) => {
+                input.addEventListener('input', () => {
+                    validateInput(input);
+                });
+            });
+
+            form.addEventListener('submit', (e) => {
+                validateForm();
+
+                if (!form.checkValidity()) {
+                    e.preventDefault();
+                }
+            });
+
+            validateForm(); // Perform initial validation
+        });
+    </script>
 </form>
