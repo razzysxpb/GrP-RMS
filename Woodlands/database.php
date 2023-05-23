@@ -1,1 +1,0 @@
-<?php  $pdo = new PDO('mysql:dbname=csy2027;host=csy2027-db.cqwt2aqvjtr5.eu-north-1.rds.amazonaws.com', 'dbuser', 'r4iB3u9sPB6SHbEXb9h');
