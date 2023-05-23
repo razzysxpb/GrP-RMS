@@ -17,16 +17,17 @@ class staff {
     }
 
     public function manageStaff() {
-        if(isset($_GET['id'])){
-            $staffMembers = $this->staffTable->find('staff_id',$_GET['id']);
-            }else{
-                $staffMembers = [];
-            }
+        if (isset($_GET['id'])) {
+			$result = $this->staffTable->find('staff_id', $_GET['id']);
+			$staffMember = $result[0];
+		} else {
+			$staffMember = false;
+		}
 
         return [
             'template' => 'manageStaff.html.php',
             'variables' => [
-                'staffMembers' => $staffMembers
+                'staffMember' => $staffMember
             ],
             'title' => 'Manage Staff'
         ];
@@ -36,6 +37,7 @@ class staff {
         $this->staffTable->save($_POST['staff']);
         header('location:/staff/staffList');
     }
+    
 
     public function staffList() {
         $staffMembers = $this->staffTable->findAll();
@@ -55,6 +57,4 @@ class staff {
 
 		header('location: /staff/staffList');
 	}
-
-    
 }

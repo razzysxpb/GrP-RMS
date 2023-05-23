@@ -17,13 +17,19 @@ class Routes implements \central\Routes {
 		$coursesTable = new \central\DatabaseTable($pdo, 'courses', 'courses_id','\woodlands\Entities\Courses',[$modulesTable, $courseModuleTable]);
 		$studentsTable = new \central\DatabaseTable($pdo, 'students', 'students_id','\woodlands\Entities\Students',[$qualificationsTable,$coursesTable,$personalTutorialTable,$modulesTable,$attendanceTable,$staffTable]);
 		$staffTable = new \central\DatabaseTable($pdo, 'staff', 'staff_id', '\woodlands\Entities\Staff',[$qualificationsTable,$coursesTable,$personalTutorialTable,$modulesTable,$attendanceTable,$studentsTable]);
-		// $messageTable = new \central\DatabaseTable($pdo, 'message', 'id', '\woodlands\Entities\Message', [$studentsTable]);
+		$announcementsTable = new \central\DatabaseTable($pdo, 'announcements', 'announcement_id');
+		$announcements = new \woodlands\Entities\Announcements($announcementsTable);
+		$messagesTable = new \central\DatabaseTable($pdo, 'messages', 'message_id');
+
 
         $controllers =[];
 		$controllers['students']= new \woodlands\Controllers\students($studentsTable);
 		$controllers['staff'] = new \woodlands\Controllers\staff($staffTable);
 		$controllers['courses'] = new \woodlands\Controllers\courses($coursesTable);
 		$controllers['modules'] = new \woodlands\Controllers\modules($modulesTable);
+		$controllers['announcements'] = new \woodlands\Controllers\announcements($announcementsTable);
+		$controllers['messages'] = new \woodlands\Controllers\messages($messagesTable);
+
 		
 	
 		return $controllers[$name];

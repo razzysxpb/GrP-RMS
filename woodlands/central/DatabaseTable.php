@@ -60,38 +60,36 @@ class DatabaseTable {
 
 
 
-public function save($record) {
-	if (empty($record[$this->primaryKey])) {
-		unset($record[$this->primaryKey]);
+public function save($record)
+	{
+		try {
+			if (empty($record[$this->primaryKey])) {
+				unset($record[$this->primaryKey]);
+			}
+			$this->insert($record);
+		} catch (\Exception $e) {
+			$this->update($record);
+		}
 	}
 
-	try {
-		$this->insert($record);
+	public function update($record)
+	{
+
+		$query = 'UPDATE ' . $this->table . ' SET ';
+
+		$parameters = [];
+		foreach ($record as $key => $value) {
+			$parameters[] = $key . ' = :' . $key;
+		}
+
+		$query .= implode(', ', $parameters);
+		$query .= ' WHERE ' . $this->primaryKey . ' = :primaryKey';
+		$record['primaryKey'] = $record[$this->primaryKey];
+
+		$stmt = $this->pdo->prepare($query);
+
+		$stmt->execute($record);
 	}
-	catch (\Exception $e) {
-		$this->update($record);
-	}
-}
-
-public function update($record) {
-
-		 $query = 'UPDATE ' . $this->table . ' SET ';
-
-		 $parameters = [];
-		 foreach ($record as $key => $value) {
-				$parameters[] = $key . ' = :' .$key;
-		 }
-
-		 $query .= implode(', ', $parameters);
-		 $query .= ' WHERE ' . $this->primaryKey . ' = :primaryKey';
-
-		 $record['primaryKey'] = $record[$this->primaryKey];
-
-		 $stmt = $this->pdo->prepare($query);
-
-		 $stmt->execute($record);
-}
-
 
 
 	public function findGreater($field ,$value, $limit) {

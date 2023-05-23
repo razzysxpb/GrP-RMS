@@ -1,5 +1,5 @@
 <form class="form" method="POST" action="">
-    <?php $staffMember = isset($staffMembers[0]) ? $staffMembers[0] : null; ?>
+    
     <label for="staff_id">Staff ID:</label>
     <input type="text" name="staff[staff_id]" id="staff_id" value="<?= $staffMember->staff_id ?? '' ?>" placeholder="Staff ID" required>
 
@@ -32,10 +32,12 @@
             const inputs = form.querySelectorAll('input[required]');
 
             function validateInput(input) {
-                if (input.checkValidity()) {
-                    input.classList.remove('error');
-                } else {
+                if (input.value.trim() === '') {
                     input.classList.add('error');
+                    input.setCustomValidity('Please fill in ' + input.getAttribute('placeholder') + '.');
+                } else {
+                    input.classList.remove('error');
+                    input.setCustomValidity('');
                 }
             }
 

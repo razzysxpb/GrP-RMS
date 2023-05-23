@@ -9,16 +9,17 @@ class students {
     }
 
     public function manageStudent() {
-        if(isset($_GET['id'])){
-        $students = $this->studentsTable->find('students_id',$_GET['id']);
-        }else{
-            $students = [];
-        }
+        if (isset($_GET['id'])) {
+			$result = $this->studentsTable->find('students_id', $_GET['id']);
+			$student = $result[0];
+		} else {
+			$student = false;
+		}
 
         return [
             'template' => 'manageStudent.html.php',
             'variables' => [
-                'students' => $students
+                'student' => $student
             ],
             'title' => 'Manage Student'
         ];

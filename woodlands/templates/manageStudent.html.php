@@ -1,7 +1,4 @@
 <form class="form" method="POST" action="">
-    <?php if (!empty($students)): ?>
-        <?php $student = $students[0]; ?>
-    <?php endif; ?>
     
     <label for="student_id">Student ID:</label>
     <input type="text" name="student[students_id]" id="student_id" value="<?= $student->students_id ?? '' ?>" placeholder="Student ID" required data-field-name="Student ID">
