@@ -1,5 +1,7 @@
 <!-- Column headers table -->
 <table>
+  <label for="search">Search: </label>
+  <input type="text" name="search"S id="search-input">
   <thead>
     <tr>
       <th>Module ID</th>

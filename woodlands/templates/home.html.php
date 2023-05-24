@@ -1,1 +1,10 @@
-<h1 style="color: black; text-align: center;">Welcome to Woodlands RMS</h1>
+<h1 style ="color:black; ">Welcome to Woodlands RMS</h1>
+    <img style = "margin-top: 2vh;" src="/images/log.jpg">
+    <div style ="    width: 59%;
+    display: inline-block;">
+        <h2 style="text-align: center;">Woodlands terms of service</h2>
+
+        <p>
+        By continuing to use this service you are agreeing to Woodland's terms and conditions.    
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, nam inventore. Eum adipisci vero velit dicta quod quidem nulla sint optio exercitationem culpa, reiciendis non. Adipisci illo dolorum quia autem! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos perferendis adipisci obcaecati nobis numquam incidunt et dolores? Nostrum recusandae magnam, eos optio necessitatibus sequi dolorum expedita, labore impedit a doloremque. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda culpa et quis vitae, aliquid delectus dolore, provident facere ducimus nesciunt dolores inventore dignissimos aliquam harum eum consequuntur maiores. Commodi, quibusdam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex asperiores sit consectetur provident iusto impedit delectus, voluptate est dolorem rem velit et repudiandae reprehenderit nam minus harum libero placeat! Ipsum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ex quam consequuntur earum a quae aliquid et consequatur error laboriosam, assumenda, quidem fuga culpa dolorem pariatur reiciendis? Alias, quae suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis inventore blanditiis fuga vel dicta maiores itaque explicabo perferendis. Veritatis repudiandae nisi aliquid ratione quas exercitationem praesentium dignissimos, natus autem delectus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro libero molestias saepe minima magni maiores voluptatum magnam et. Inventore magnam deserunt sapiente architecto libero quisquam omnis error a perspiciatis corporis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam inventore nostrum voluptate in sed vel velit accusamus? Delectus maxime assumenda rerum sequi fugit tempore ea, recusandae veritatis itaque accusamus ab!</p>
+</div>

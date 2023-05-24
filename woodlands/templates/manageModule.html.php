@@ -9,7 +9,6 @@
     <label for="module_year">Module Year:</label>
     <input type="text" name="module[module_year]" id="module_year" value="<?= $module->module_year ?? '' ?>" placeholder="Module Year" required>
 
-    <!-- Add more module fields here -->
 
     <input type="submit" value="Submit">
 

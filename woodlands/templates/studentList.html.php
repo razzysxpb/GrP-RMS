@@ -4,9 +4,9 @@
     <tr>
       <th>Student ID</th>
       <th style="width: 15%">First Name</th>
-      <th style="width: 5%">Middle Name</th>
+      <th style="width: 10%">Middle Name</th>
       <th style="width: 15%">Surname</th>
-      <th style="width: 5%">Email</th>
+      <th style="width: 15%">Email</th>
       <th>&nbsp;</th>
     </tr>
   </thead>

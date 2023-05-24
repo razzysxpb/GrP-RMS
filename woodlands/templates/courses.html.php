@@ -1,10 +1,13 @@
-<table>
-  <thead>
+<?php if(isset($_SESSION['isAdmin'])){ ?>
+<button><a href="/courses/addCourse" style ="text-decoration:none; color:black;">Add New Course</a></button>
+<?php } ?>
+<table style="width:80%;">
+  <thead >
     <tr>
-      <th>Course ID</th>
-      <th style="width: 15%">Course Name</th>
+      <th style="width: 15%">Course ID</th>
+      <th style="width: 30%">Course Name</th>
       <th style="width: 5%">Number Of Assigned Modules</th>
-      <th style="width: 5%">&nbsp;</th>
+      <th style="width: 15%">&nbsp;</th>
     </tr>
   </thead>
   <tbody>

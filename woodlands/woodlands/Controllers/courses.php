@@ -50,4 +50,16 @@ class Courses {
 
 		header('location: /courses/courses');
 	}
+    public function addCourse(){
+        return [
+            'template' => 'addCourse.html.php',
+            'variables' => [
+            ],
+            'title' => 'Add Course'
+        ];
+    }
+    public function addCourseSubmit(){
+        $this->coursesTable->save($_POST['course']);
+        header('location:/courses/manageCourse?id='.$_POST['course']['courses_id'].'');
+    }
 }
