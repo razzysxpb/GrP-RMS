@@ -8,6 +8,9 @@ class Courses {
     public $courses_id;
     public $name;
 
+    public $module_id;
+    public $module_year;
+
 
 
   

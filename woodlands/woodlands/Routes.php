@@ -41,46 +41,88 @@ class Routes implements \central\Routes {
         return 'staff/home';
         }
 
-		// public function checkLogin($route) {
-		// 	session_start();
-		// 	$loginRoutes = [];
-		// 	$loginRoutes['job/adminJobs'] = true;
-		// 	$loginRoutes['job/adminJobsSubmit'] = true;
-		// 	$loginRoutes['category/adminManageCategory'] = true;
-		// 	$loginRoutes['category/adminManageCategorySubmit'] = true;
-		// 	$loginRoutes['job/adminApplicants'] = true;
-		// 	$loginRoutes['category/adminCategories'] = true;
-		// 	$loginRoutes['job/deleteJob'] = true;
-		// 	$loginRoutes['job/adminManageJob'] = true;
-		// 	$loginRoutes['job/adminManageJobSubmit'] = true;
-		// 	$loginRoutes['message/adminMessage'] = true;
-		// 	$loginRoutes['job/adminJobArchive'] = true;
-			
-		// 	$superRoutes['admin/adminAdminList'] = true;
-		// 	$superRoutes['admin/adminManageAdmin'] = true;
-		// 	$superRoutes['admin/adminManageAdminSubmit'] = true;
+		public function checkLogin($route)
+	{
+		$loginRoutes = [];
+		// Staff related pages
+		$loginRoutes['staff/home'] = true;
+		$loginRoutes['staff/manageStaff'] = true;
+		$loginRoutes['staff/manageStaffSubmit'] = true;
+		$loginRoutes['staff/staffList'] = true;
+		$loginRoutes['staff/deleteSubmit'] = true;
+		$loginRoutes['staff/logout'] = true;
+		// Student related pages
+		$loginRoutes['students/manageStudent'] = true;
+		$loginRoutes['students/manageStudentSubmit'] = true;
+		$loginRoutes['students/studentList'] = true;
+		$loginRoutes['students/deleteSubmit'] = true;
+		// Modules related pages
+		$loginRoutes['modules/modules'] = true;
+		$loginRoutes['modules/manageModule'] = true;
+		$loginRoutes['modules/manageModuleSubmit'] = true;
+		$loginRoutes['modules/deleteSubmit'] = true;
+		// Messages related pages
+		$loginRoutes['messages/messages'] = true;
+		$loginRoutes['messages/manageMessage'] = true;
+		$loginRoutes['messages/manageMessageSubmit'] = true;
+		$loginRoutes['messages/deleteSubmit'] = true;
+		// Courses related pages
+		$loginRoutes['courses/courses'] = true;
+		$loginRoutes['courses/manageCourse'] = true;
+		$loginRoutes['courses/manageCourseSubmit'] = true;
+		$loginRoutes['courses/deleteSubmit'] = true;
+		// Announcements related pages
+		$loginRoutes['announcements/announcements'] = true;
+		$loginRoutes['announcements/manageAnnouncement'] = true;
+		$loginRoutes['announcements/manageAnnouncementSubmit'] = true;
+		$loginRoutes['announcements/deleteSubmit'] = true;
 
-		// 	$userRoutes['admin/adminHome'] = true;
-		// 	$userRoutes['job/userJobs']=true;
-		// 	$userRoutes['job/userApplicants']=true;
-		// 	$userRoutes['job/userManageJob']=true;
-		// 	$userRoutes['job/userManageJobSubmit']=true;
-			
-		// 	$requiresLogin = $loginRoutes[$route] ?? false;
-		// 	$requiresSuper = $superRoutes[$route] ?? false;
-		// 	$requiresUser = $userRoutes[$route] ?? false;
-		// 	if ($requiresLogin && !isset($_SESSION['admin'])&& !isset($_SESSION['super'])) {
-		// 	header('location: /admin/login');
-		// 	exit();}
-		// 	if ($requiresSuper && !isset($_SESSION['super'])) {
-		// 		header('location: /admin/login');
-		//    exit();
-		// 	}
-		// 	if ($requiresUser && !isset($_SESSION['user'])&& !isset($_SESSION['admin'])&& !isset($_SESSION['super'])) {
-		// 		header('location: /admin/login');
-		//    exit();
-		// 	}
-			
-//}
+		$requiresLogin = $loginRoutes[$route] ?? false;
+		if ($requiresLogin && !isset($_SESSION['loggedin'])) {
+			header('location: /staff/login');
+			exit();
+		}
+	}
+	public function checkAdmin($route)
+	{
+		$loginRoutes = [];
+		// Staff related pages
+		$loginRoutes['staff/home'] = true;
+		$loginRoutes['staff/manageStaff'] = true;
+		$loginRoutes['staff/manageStaffSubmit'] = true;
+		$loginRoutes['staff/staffList'] = true;
+		$loginRoutes['staff/deleteSubmit'] = true;
+		// Student related pages
+		$loginRoutes['students/manageStudent'] = true;
+		$loginRoutes['students/manageStudentSubmit'] = true;
+		$loginRoutes['students/studentList'] = true;
+		$loginRoutes['students/deleteSubmit'] = true;
+		// Modules related pages
+		$loginRoutes['modules/modules'] = true;
+		$loginRoutes['modules/manageModule'] = true;
+		$loginRoutes['modules/manageModuleSubmit'] = true;
+		$loginRoutes['modules/deleteSubmit'] = true;
+		// Messages related pages
+		$loginRoutes['messages/messages'] = true;
+		$loginRoutes['messages/manageMessage'] = true;
+		$loginRoutes['messages/manageMessageSubmit'] = true;
+		$loginRoutes['messages/deleteSubmit'] = true;
+		// Courses related pages
+		$loginRoutes['courses/courses'] = true;
+		$loginRoutes['courses/manageCourse'] = true;
+		$loginRoutes['courses/manageCourseSubmit'] = true;
+		$loginRoutes['courses/deleteSubmit'] = true;
+		// Announcements related pages
+		$loginRoutes['announcements/announcements'] = true;
+		$loginRoutes['announcements/manageAnnouncement'] = true;
+		$loginRoutes['announcements/manageAnnouncementSubmit'] = true;
+		$loginRoutes['announcements/deleteSubmit'] = true;
+
+		$requiresAdmin = $loginRoutes[$route] ?? false;
+		if ($requiresAdmin && (!isset($_SESSION['isAdmin']) || !$_SESSION['isAdmin'])) {
+			header('location: /staff/login');
+			exit();
+		}
+	}
    
 }

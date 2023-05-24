@@ -1,4 +1,3 @@
-
 <label for="course_id">Course ID:</label>
     <h3><?= $course->course_id ?? "" ?></h3>
 <form method = "POST" >
@@ -175,4 +174,3 @@
 });
 
     </script>
-

@@ -14,10 +14,10 @@
         <td><?= $course->name ?></td>
         <td><?= count($course->courseModules()) ?></td>
         <td>
-          <a href="/courses/manageCourse?id=<?= $course->courses_id ?>">Edit Details</a>
+          <button onclick="window.location.href='/courses/manageCourse?id=<?= $course->courses_id ?>'" class="button">Edit</button>
           <form method="post" action="/courses/delete" onsubmit="return confirm('Are you sure you want to delete the course <?= $course->name ?>?');">
             <input type="hidden" name="id" value="<?= $course->courses_id ?>" />
-            <input type="submit" name="submit" value="Delete" />
+            <input type="submit" name="submit" value="Delete" class="button" />
           </form>
         </td>
       </tr>

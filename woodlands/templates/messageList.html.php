@@ -22,8 +22,8 @@
         <td><?= $message->students_id ?></td>
         <td><?= $message->staff_id ?></td>
         <td>
-          <button onclick="openPopup('<?= $message->message_id ?>')">View Details</button>
-          <a href="/messages/manageMessage?id=<?= $message->message_id ?>">Edit Details</a>
+          <button onclick="openPopup('<?= $message->message_id ?>')">View</button>
+          <a href="/messages/manageMessage?id=<?= $message->message_id ?>">Edit</a>
 
           <form method="post" action="/messages/delete" onsubmit="return confirm('Are you sure you want to delete the message <?= $message->title ?>?')">
             <input type="hidden" name="id" value="<?= $message->message_id ?>" />

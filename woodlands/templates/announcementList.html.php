@@ -20,8 +20,8 @@
         <td><?= $announcement->description ?></td>
         <td><?= $announcement->date ?></td>
         <td>
-          <button onclick="openPopup('<?= $announcement->announcement_id ?>')">View Details</button>
-          <a href="/announcements/manageAnnouncement?id=<?= $announcement->announcement_id ?>"><button>Edit Details</button></a>
+          <button onclick="openPopup('<?= $announcement->announcement_id ?>')">View</button>
+          <a href="/announcements/manageAnnouncement?id=<?= $announcement->announcement_id ?>"><button>Edit</button></a>
 
           <form method="post" action="/announcements/delete" onsubmit="return confirm('Are you sure you want to delete the announcement <?= $announcement->title ?>?')">
             <input type="hidden" name="id" value="<?= $announcement->announcement_id ?>" />

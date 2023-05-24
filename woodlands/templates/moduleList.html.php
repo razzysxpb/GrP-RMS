@@ -21,11 +21,11 @@
         <td><?= $module->module_id ?></td>
         <td><?= $module->name ?></td>
         <td><?= $module->module_year ?></td>
-        <td><a href="/announcements/manageAnnouncement?module_id=<?=$module->module_id?>"><button>Send Announcevment</button></a></td>
+        <td><a href="/announcements/manageAnnouncement?module_id=<?=$module->module_id?>"><button>Send Announcement</button></a></td>
         <td>
-          <button onclick="openPopup('<?= $module->module_id ?>')">View Details</button>
+          <button onclick="openPopup('<?= $module->module_id ?>')">View</button>
           <?php if(isset($_SESSION['admim'])){ ?>
-          <a href="/modules/manageModule?id=<?= $module->module_id ?>">Edit Details</a>
+          <a href="/modules/manageModule?id=<?= $module->module_id ?>">Edit</a>
 
           <form method="post" action="/modules/delete" onsubmit="return confirm('Are you sure you want to delete the module <?= $module->name ?>?')">
             <input type="hidden" name="id" value="<?= $module->module_id ?>" />

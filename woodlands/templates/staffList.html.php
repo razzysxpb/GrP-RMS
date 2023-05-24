@@ -20,8 +20,8 @@
         <td><?= $staff->surname ?></td>
         <td><?= $staff->email ?></td>
         <td>
-          <button onclick="openPopup('<?= $staff->staff_id ?>')">View Details</button>
-          <a href="/staff/manageStaff?id=<?= $staff->staff_id ?>">Edit Details</a>
+          <button onclick="openPopup('<?= $staff->staff_id ?>')">View</button>
+          <button onclick="window.location.href='/staff/manageStaff?id=<?= $staff->staff_id ?>'">Edit</button>
 
           <form method="post" action="/staff/delete" onsubmit="return confirm('Are you sure you want to delete <?= $staff->firstname ?> <?= $staff->surname ?>?')">
             <input type="hidden" name="id" value="<?= $staff->staff_id ?>" />

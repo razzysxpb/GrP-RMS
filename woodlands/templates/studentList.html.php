@@ -20,12 +20,12 @@
         <td><?= $student->surname ?></td>
         <td><?= $student->email ?></td>
         <td>
-          <button onclick="openPopup('<?= $student->students_id ?>')">View Details</button>
-          <a href="/students/manageStudent?id=<?= $student->students_id ?>">Edit Details</a>
+          <button onclick="openPopup('<?= $student->students_id ?>')">View</button>
+          <button onclick="window.location.href='/students/manageStudent?id=<?= $student->students_id ?>'">Edit</button>
 
           <form method="post" action="/students/delete" onsubmit="return confirm('Are you sure you want to delete <?= $student->firstname ?> <?= $student->surname ?>?')">
             <input type="hidden" name="id" value="<?= $student->students_id ?>" />
-            <input type="submit" name="submit" value="Delete" />
+            <button type="submit">Delete</button>
           </form>
         </td>
       </tr>

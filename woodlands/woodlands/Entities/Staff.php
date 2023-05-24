@@ -22,6 +22,8 @@ class Staff {
     public $roles;
     public $mod_leader;
     public $specialist_subjects;
+    public $isAdmin;
+    public $password;
 
   
 

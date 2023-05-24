@@ -33,10 +33,15 @@ class staff {
         ];
     }
 
-    public function manageStaffSubmit() {
-        $this->staffTable->save($_POST['staff']);
-        header('location:/staff/staffList');
-    }
+    public function manageStaffSubmit()
+{
+    $staff = $_POST['staff'];
+    $staff['isAdmin'] = $_POST['staff']['isAdmin'] ?? 0;
+    $staff['password'] = password_hash($staff['password'], PASSWORD_DEFAULT);
+    $this->staffTable->save($staff);
+    header('location:/staff/staffList');
+}
+
     
 
     public function staffList() {
@@ -58,15 +63,53 @@ class staff {
 		header('location: /staff/staffList');
 	}
 
-    public function logout(){
-           session_destroy();
-           return [
-            'template' => 'logout.html.php',
-            'variables' => [
-               
-            ],
-            'title' => 'Logout'
-        ];
+    public function login()
+	{
 
+		return [
+			'template' => 'login.html.php',
+			'variables' => [],
+			'title' => 'Login'
+		];
+	}
+
+    public function loginSubmit()
+{
+    $staff = $this->staffTable->find('staff_id', $_POST['staff']['staff_id']);
+    if (count($staff) > 0) {
+        $staff = $staff[0];
+        if (password_verify($_POST['staff']['password'], $staff->password)) {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['staff_id'] = $staff->staff_id;
+            $_SESSION['isAdmin'] = $staff->isAdmin;
+            // $_SESSION['accountName'] = $staff->firstname;
+
+            if ($_SESSION['isAdmin']) {
+                header('location: /staff/staffList');
+                exit();
+            } else {
+                header('location: /staff/login');
+                exit();
+            }
+        }
     }
+
+    return [
+        'template' => 'login.html.php',
+        'variables' => ['error' => 'Invalid staff ID or password'],
+        'title' => 'Wrong credentials'
+    ];
+}
+
+
+
+	public function logout()
+	{
+		session_destroy();
+		$_SESSION = [];
+		header('location: /staff/login');
+	}
+
+
+	
 }

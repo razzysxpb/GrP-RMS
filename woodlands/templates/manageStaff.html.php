@@ -4,8 +4,26 @@
     <input type="text" name="staff[staff_id]" id="staff_id" value="<?= $staffMember->staff_id ?? '' ?>" placeholder="Staff ID" required>
 
     <label for="status">Status:</label>
-    <input type="text" name="staff[status]" id="status" value="<?= $staffMember->status ?? '' ?>" placeholder="Status" required>
-
+    <select name="staff[status]" id="status" required data-field-name="Status">
+        <?php if($staff->status==="DORMANT"): ?>
+            <option value="DORMANT" selected>DORMANT</option>
+            <option value="LIVE">LIVE</option>
+            <option value="PROSPECTIVE">PROSPECTIVE</option>
+        <?php elseif($staff->status==="LIVE"): ?>
+            <option value="LIVE" selected>LIVE</option>
+            <option value="PROSPECTIVE">PROSPECTIVE</option>
+            <option value="DORMANT">DORMANT</option>
+        <?php elseif($staff->status==="PROSPECTIVE"): ?>
+            <option value="PROSPECTIVE" selected>PROSPECTIVE</option>
+            <option value="DORMANT">DORMANT</option>
+            <option value="LIVE">LIVE</option>
+        <?php else: ?>
+            <option value="PROSPECTIVE">PROSPECTIVE</option>
+            <option value="DORMANT">DORMANT</option>
+            <option value="LIVE">LIVE</option>
+        <?php endif; ?>
+    </select>
+    
     <label for="dormancy_reason">Dormancy Reason:</label>
     <input type="text" name="staff[dormancy_reason]" id="dormancy_reason" value="<?= $staffMember->dormancy_reason ?? '' ?>" placeholder="Dormancy reason">
 
@@ -23,6 +41,13 @@
 
     <label for="email">Email Address:</label>
     <input type="text" name="staff[email]" id="email" value="<?= $staffMember->email ?? '' ?>" placeholder="Email address" required>
+
+    <label for="password">Password:</label>
+    <input type="password" name="staff[password]" id="password" value="<?= $staffMember->password ?? '' ?>" placeholder="Password">
+
+    <label for="admin">Admin:</label>
+<input type="checkbox" name="staff[isAdmin]" id="admin" value="1" <?php if (isset($staffMember->isAdmin) && $staffMember->isAdmin == 1) echo 'checked'; ?>>
+
 
     <input type="submit" value="Submit">
 
