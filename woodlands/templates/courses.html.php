@@ -14,11 +14,15 @@
         <td><?= $course->name ?></td>
         <td><?= count($course->courseModules()) ?></td>
         <td>
-          <button onclick="window.location.href='/courses/manageCourse?id=<?= $course->courses_id ?>'" class="button">Edit</button>
-          <form method="post" action="/courses/delete" onsubmit="return confirm('Are you sure you want to delete the course <?= $course->name ?>?');">
-            <input type="hidden" name="id" value="<?= $course->courses_id ?>" />
-            <input type="submit" name="submit" value="Delete" class="button" />
-          </form>
+          <?php if (isset($_SESSION['isAdmin'])) { ?>
+            <button onclick="window.location.href='/courses/manageCourse?id=<?= $course->courses_id ?>'" class="button">Edit</button>
+            <form method="post" action="/courses/delete" onsubmit="return confirm('Are you sure you want to delete <?= $course->name ?>?')">
+              <input type="hidden" name="id" value="<?= $course->courses_id ?>" />
+              <?php if ($_SESSION['isAdmin']) { ?>
+                <button type="submit">Delete</button>
+              <?php } ?>
+            </form>
+          <?php } ?>
         </td>
       </tr>
     <?php } ?>

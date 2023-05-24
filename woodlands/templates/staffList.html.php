@@ -23,10 +23,14 @@
           <button onclick="openPopup('<?= $staff->staff_id ?>')">View</button>
           <button onclick="window.location.href='/staff/manageStaff?id=<?= $staff->staff_id ?>'">Edit</button>
 
-          <form method="post" action="/staff/delete" onsubmit="return confirm('Are you sure you want to delete <?= $staff->firstname ?> <?= $staff->surname ?>?')">
-            <input type="hidden" name="id" value="<?= $staff->staff_id ?>" />
-            <input type="submit" name="submit" value="Delete" />
-          </form>
+          <?php if (isset($_SESSION['isAdmin'])) { ?>
+            <form method="post" action="/staff/delete" onsubmit="return confirm('Are you sure you want to delete <?= $staff->firstname ?> <?= $staff->surname ?>?')">
+              <input type="hidden" name="id" value="<?= $staff->staff_id ?>" />
+              <?php if ($_SESSION['isAdmin']) { ?>
+                <input type="submit" name="submit" value="Delete" />
+              <?php } ?>
+            </form>
+          <?php } ?>
         </td>
       </tr>
     <?php } ?>

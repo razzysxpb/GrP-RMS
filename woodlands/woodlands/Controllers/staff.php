@@ -37,10 +37,21 @@ class staff {
 {
     $staff = $_POST['staff'];
     $staff['isAdmin'] = $_POST['staff']['isAdmin'] ?? 0;
-    $staff['password'] = password_hash($staff['password'], PASSWORD_DEFAULT);
+
+    // Check if a new password is provided
+    if (!empty($staff['password']) && !password_needs_rehash($staff['password'], PASSWORD_DEFAULT)) {
+        // Retrieve the existing password from the database
+        $existingStaff = $this->staffTable->findById($staff['staff_id']);
+        $staff['password'] = $existingStaff['password'];
+    } elseif (!empty($staff['password'])) {
+        $staff['password'] = password_hash($staff['password'], PASSWORD_DEFAULT);
+    }
+
     $this->staffTable->save($staff);
     header('location:/staff/staffList');
 }
+
+
 
     
 
@@ -85,10 +96,10 @@ class staff {
             // $_SESSION['accountName'] = $staff->firstname;
 
             if ($_SESSION['isAdmin']) {
-                header('location: /staff/staffList');
+                header('location: /');
                 exit();
             } else {
-                header('location: /staff/login');
+                header('location: /');
                 exit();
             }
         }
@@ -110,6 +121,14 @@ class staff {
 		header('location: /staff/login');
 	}
 
+    public function needAdmin()
+	{
 
+		return [
+			'template' => 'needAdmin.html.php',
+			'variables' => [],
+			'title' => 'Need to be admin'
+		];
+	}
 	
 }

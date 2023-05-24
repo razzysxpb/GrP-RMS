@@ -1,4 +1,3 @@
-<!-- Column headers table -->
 <table>
   <thead>
     <tr>
@@ -22,16 +21,21 @@
         <td>
           <button onclick="openPopup('<?= $announcement->announcement_id ?>')">View</button>
           <a href="/announcements/manageAnnouncement?id=<?= $announcement->announcement_id ?>"><button>Edit</button></a>
-
-          <form method="post" action="/announcements/delete" onsubmit="return confirm('Are you sure you want to delete the announcement <?= $announcement->title ?>?')">
-            <input type="hidden" name="id" value="<?= $announcement->announcement_id ?>" />
-            <input type="submit" name="submit" value="Delete" />
-          </form>
+          <?php if (isset($_SESSION['isAdmin'])) { ?>
+            <form method="post" action="/announcements/delete" onsubmit="return confirm('Are you sure you want to delete <?= $announcement->title ?>?')">
+              <input type="hidden" name="id" value="<?= $announcement->announcement_id ?>" />
+              <?php if ($_SESSION['isAdmin']) { ?>
+                <button type="submit">Delete</button>
+              <?php } ?>
+            </form>
+          <?php } ?>
         </td>
       </tr>
     <?php } ?>
   </tbody>
 </table>
+
+
 
 <!-- Full announcement information pop-up template -->
 <div id="announcementDetailsPopup" style="display: none;">

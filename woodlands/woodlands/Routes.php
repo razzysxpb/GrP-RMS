@@ -79,7 +79,7 @@ class Routes implements \central\Routes {
 
 		$requiresLogin = $loginRoutes[$route] ?? false;
 		if ($requiresLogin && !isset($_SESSION['loggedin'])) {
-			header('location: /staff/login');
+			header('location: /staff/home');
 			exit();
 		}
 	}
@@ -87,40 +87,33 @@ class Routes implements \central\Routes {
 	{
 		$loginRoutes = [];
 		// Staff related pages
-		$loginRoutes['staff/home'] = true;
 		$loginRoutes['staff/manageStaff'] = true;
 		$loginRoutes['staff/manageStaffSubmit'] = true;
-		$loginRoutes['staff/staffList'] = true;
 		$loginRoutes['staff/deleteSubmit'] = true;
 		// Student related pages
 		$loginRoutes['students/manageStudent'] = true;
 		$loginRoutes['students/manageStudentSubmit'] = true;
-		$loginRoutes['students/studentList'] = true;
 		$loginRoutes['students/deleteSubmit'] = true;
 		// Modules related pages
-		$loginRoutes['modules/modules'] = true;
 		$loginRoutes['modules/manageModule'] = true;
 		$loginRoutes['modules/manageModuleSubmit'] = true;
 		$loginRoutes['modules/deleteSubmit'] = true;
 		// Messages related pages
-		$loginRoutes['messages/messages'] = true;
 		$loginRoutes['messages/manageMessage'] = true;
 		$loginRoutes['messages/manageMessageSubmit'] = true;
 		$loginRoutes['messages/deleteSubmit'] = true;
 		// Courses related pages
-		$loginRoutes['courses/courses'] = true;
 		$loginRoutes['courses/manageCourse'] = true;
 		$loginRoutes['courses/manageCourseSubmit'] = true;
 		$loginRoutes['courses/deleteSubmit'] = true;
 		// Announcements related pages
-		$loginRoutes['announcements/announcements'] = true;
 		$loginRoutes['announcements/manageAnnouncement'] = true;
 		$loginRoutes['announcements/manageAnnouncementSubmit'] = true;
 		$loginRoutes['announcements/deleteSubmit'] = true;
 
 		$requiresAdmin = $loginRoutes[$route] ?? false;
 		if ($requiresAdmin && (!isset($_SESSION['isAdmin']) || !$_SESSION['isAdmin'])) {
-			header('location: /staff/login');
+			header('location: /staff/needAdmin');
 			exit();
 		}
 	}

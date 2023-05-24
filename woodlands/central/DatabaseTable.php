@@ -128,4 +128,13 @@ public function save($record)
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+
+	public function findById($id)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE $this->primaryKey = :id");
+        $statement->bindParam(':id', $id);
+        $statement->execute();
+
+        return $statement->fetch();
+    }
 }
