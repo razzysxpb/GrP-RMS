@@ -1,25 +1,44 @@
 body {
   margin: 0;
   padding: 0;
+  
+  margin-bottom: 10vh;
 }
 
 header {
   background-color: #81007f;
   display: flex;
   align-items: center;
-  
+  position: fixed;
   height: 14vh;
+  width: 100vw;
 }
 header img{
   display: inline-block;
   max-width: 20%;
   max-height: 100px;
 }
+header a{
+  text-decoration: none;
+  color: white;
+
+
+}
+button.logout{
+  margin-left: 4vw;
+  color: black;
+}
+
+div.main{
+  margin-top: 13vh;
+}
 
 h1 {
   color: white;
   margin: 0;
   font-size: 5vh;
+  margin-right: 4vw;
+  margin-left: 1vw;
 }
 
 .sidebar {
@@ -95,6 +114,7 @@ footer {
         position: fixed;
         left: 0;
         bottom: 0;
+        
       }
 
 
@@ -110,14 +130,14 @@ footer {
         box-sizing: border-box;
       }
       select#status{
-        width: 30%; /* Adjusted width to accommodate two inputs per row */
+        width: 30%; 
         margin-bottom: 10px;
         padding: 5px;
         box-sizing: border-box;
       }
       .form input[type="text"],
       .form input[type="date"] {
-        width: 30%; /* Adjusted width to accommodate two inputs per row */
+        width: 30%; 
         margin-bottom: 10px;
         padding: 5px;
         box-sizing: border-box;
@@ -145,6 +165,7 @@ footer {
         padding: 10px;
         margin-bottom: 10px;
         width: 300px;
+       
     }
 
     #module-form {
@@ -158,4 +179,27 @@ footer {
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 20px;
+    }
+
+
+    /* TABLES */
+
+    table {
+      border-collapse: collapse;
+    }
+    
+    thead th {
+      border-bottom: 1px solid black;
+    }
+    
+    tbody td {
+      border-bottom: 1px solid #ccc;
+    }
+    
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tbody tr td:not(:last-child) {
+      border-right: 1px solid #ccc;
     }

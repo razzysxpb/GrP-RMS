@@ -13,12 +13,12 @@ class Routes implements \central\Routes {
         $personalTutorsTable = new \central\DatabaseTable($pdo,'personal_tutors','personal_tutors_id');
         $moduleStaffTable = new \central\DatabaseTable($pdo, 'module_staff', 'module_staff_id');
 		$assignmentsTable = new \central\DatabaseTable($pdo, 'assignments', 'assignments_id');
-		$modulesTable = new \central\DatabaseTable($pdo, 'modules', 'module_id','\woodlands\Entities\Modules',[$staffTable]);
+		$modulesTable = new \central\DatabaseTable($pdo, 'modules', 'module_id','\woodlands\Entities\Modules',[$staffTable, $moduleStaffTable]);
 		$coursesTable = new \central\DatabaseTable($pdo, 'courses', 'courses_id','\woodlands\Entities\Courses',[$modulesTable, $courseModuleTable]);
 		$studentsTable = new \central\DatabaseTable($pdo, 'students', 'students_id','\woodlands\Entities\Students',[$qualificationsTable,$coursesTable,$personalTutorialTable,$modulesTable,$attendanceTable,$staffTable]);
 		$staffTable = new \central\DatabaseTable($pdo, 'staff', 'staff_id', '\woodlands\Entities\Staff',[$qualificationsTable,$coursesTable,$personalTutorialTable,$modulesTable,$attendanceTable,$studentsTable]);
-		$announcementsTable = new \central\DatabaseTable($pdo, 'announcements', 'announcement_id');
-		$announcements = new \woodlands\Entities\Announcements($announcementsTable);
+		$announcementsTable = new \central\DatabaseTable($pdo, 'announcements', 'announcement_id','\woodlands\Entities\Announcements',[$modulesTable]);
+		// $announcements = new \woodlands\Entities\Announcements($announcementsTable);
 		$messagesTable = new \central\DatabaseTable($pdo, 'messages', 'message_id');
 
 

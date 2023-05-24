@@ -57,4 +57,16 @@ class staff {
 
 		header('location: /staff/staffList');
 	}
+
+    public function logout(){
+           session_destroy();
+           return [
+            'template' => 'logout.html.php',
+            'variables' => [
+               
+            ],
+            'title' => 'Logout'
+        ];
+
+    }
 }

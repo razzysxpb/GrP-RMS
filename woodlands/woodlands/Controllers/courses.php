@@ -32,6 +32,17 @@ class Courses {
         'title' => 'Manage Course'
     ];
     }
+    public function manageCourseSubmit(){
+        
+        $course = $this->coursesTable->find('courses_id',$_POST['course_id'])[0];
+
+        $course->deleteLinks();
+        $course->saveLinks($_POST['module_id']);
+        $_POST['course']['courses_id']=$_POST['course_id'];
+        $this->coursesTable->save($_POST['course']);
+      
+        header('location: /courses/courses');
+    }
 
     public function deleteSubmit()
 	{

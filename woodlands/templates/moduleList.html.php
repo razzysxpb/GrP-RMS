@@ -1,28 +1,37 @@
 <!-- Column headers table -->
 <table>
+  <label for="search">Search: </label>
+  <input type="text" name="search"S id="search-input">
   <thead>
     <tr>
       <th>Module ID</th>
       <th style="width: 50%">Name</th>
       <th>Module Year</th>
+      <th>Announcement</th>
       <th>&nbsp;</th>
     </tr>
   </thead>
 
   <tbody>
-    <?php foreach ($modules as $module) { ?>
+    <?php foreach ($modules as $module) { 
+      if(isset($_SESSION['teach'])&&!$module->isOnModule($_SESSION['teach'])){
+        continue;
+      }?>
       <tr>
         <td><?= $module->module_id ?></td>
         <td><?= $module->name ?></td>
         <td><?= $module->module_year ?></td>
+        <td><a href="/announcements/manageAnnouncement?module_id=<?=$module->module_id?>"><button>Send Announcevment</button></a></td>
         <td>
           <button onclick="openPopup('<?= $module->module_id ?>')">View Details</button>
+          <?php if(isset($_SESSION['admim'])){ ?>
           <a href="/modules/manageModule?id=<?= $module->module_id ?>">Edit Details</a>
 
           <form method="post" action="/modules/delete" onsubmit="return confirm('Are you sure you want to delete the module <?= $module->name ?>?')">
             <input type="hidden" name="id" value="<?= $module->module_id ?>" />
             <input type="submit" name="submit" value="Delete" />
           </form>
+          <?php } ?>
         </td>
       </tr>
     <?php } ?>
@@ -47,9 +56,31 @@
     var popupWindow = window.open('', 'Module Details', 'width=400,height=400');
     popupWindow.document.write('<html><head><title>Module Details</title></head><body>' + popupContent + '</body></html>');
 
-    // Close the popup window when clicked outside
+ 
     popupWindow.document.addEventListener('click', function() {
       popupWindow.close();
     });
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const moduleTable = document.querySelector('table');
+    const moduleRows = moduleTable.querySelectorAll('tbody tr');
+    const searchInput = document.getElementById('search-input');
+
+    searchInput.addEventListener('input', () => {
+      const searchQuery = searchInput.value.toLowerCase();
+
+      moduleRows.forEach((row) => {
+        const moduleID = row.querySelector('td:nth-child(1)').textContent.toLowerCase();
+        const moduleName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+
+        if (moduleID.includes(searchQuery) || moduleName.includes(searchQuery)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  });
 </script>
+

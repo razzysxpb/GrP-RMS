@@ -3,8 +3,9 @@
   <thead>
     <tr>
       <th>Announcement ID</th>
-      <th style="width: 50%">Title</th>
-      <th>Description</th>
+      <th>Module</th>
+      <th style="width: 30%">Title</th>
+      <th style="width: 40%">Description</th>
       <th>Date</th>
       <th>&nbsp;</th>
     </tr>
@@ -14,12 +15,13 @@
     <?php foreach ($announcements as $announcement) { ?>
       <tr>
         <td><?= $announcement->announcement_id ?></td>
+        <td><?= $announcement->moduleTitle() ?></td>
         <td><?= $announcement->title ?></td>
         <td><?= $announcement->description ?></td>
         <td><?= $announcement->date ?></td>
         <td>
           <button onclick="openPopup('<?= $announcement->announcement_id ?>')">View Details</button>
-          <a href="/announcements/manageAnnouncement?id=<?= $announcement->announcement_id ?>">Edit Details</a>
+          <a href="/announcements/manageAnnouncement?id=<?= $announcement->announcement_id ?>"><button>Edit Details</button></a>
 
           <form method="post" action="/announcements/delete" onsubmit="return confirm('Are you sure you want to delete the announcement <?= $announcement->title ?>?')">
             <input type="hidden" name="id" value="<?= $announcement->announcement_id ?>" />

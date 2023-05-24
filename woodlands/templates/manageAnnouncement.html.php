@@ -1,9 +1,9 @@
 <form class="form" method="POST" action="">
     
-<input type="hidden" name="announcement[announcement_id]" value="<?= $announcement->announcement_id ?? '' ?? '' ?>" />
+<input type="hidden" name="announcement[announcement_id]" value="<?= $announcement->announcement_id ?? '' ?>" />
 
     <label for="title">Title:</label>
-    <input type="text" name="announcement[title]" id="title" value="<?= $announcement->title ?? '' ?>" placeholder="Title" required>
+    <input  type="text" name="announcement[title]" id="title" value="<?= $announcement->title ?? '' ?>" placeholder="Title" required>
 
     <label for="description">Description:</label>
     <textarea name="announcement[description]" id="description" placeholder="Description" required><?= $announcement->description ?? '' ?></textarea>
@@ -12,6 +12,7 @@
     <input type="date" name="announcement[date]" id="date" value="<?= $announcement->date ?? '' ?>" required>
 
     <!-- Add more announcement fields here -->
+    <input type="hidden" name = "announcement[modules_id]" value="<?=$_GET['module_id']??$announcement->modules_id?>" />
 
     <input type="submit" value="Submit">
 

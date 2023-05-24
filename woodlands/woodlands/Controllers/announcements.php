@@ -25,11 +25,13 @@ class Announcements {
     }
 
     public function manageAnnouncement() {
+
         if (isset($_GET['id'])) {
             $result = $this->announcementsTable->find('announcement_id', $_GET['id']);
             $announcement = $result[0];
         } else {
             $announcement = false;
+          
         }
     
         return [
@@ -42,6 +44,7 @@ class Announcements {
     }
     
     public function manageAnnouncementSubmit() {
+      
         $this->announcementsTable->save($_POST['announcement']);
         header('location: /announcements/announcements');
         exit;
